@@ -151,13 +151,13 @@ function App() {
       onChange={handleCurrentNameChange}
     />
     <Button 
-      colorScheme={countdown === 0 ? 'green' : 'red'}
+      colorScheme={finished ? 'green' : !finished && countdown > 0 ? `red` : inputText.length>0 ? 'red' : 'green'}
       onClick={handleStartClick}
       disabled={clicked}
       
     >
     
-      {countdown === 0 ? 'Start' : `${countdown}`}
+      {finished ? 'Firewall Breached!' : !finished && countdown > 0 ? `${countdown}` : inputText.length>0 ? 'Failure' : 'Start'}
     </Button>
     <Button ml = "30px"
       colorScheme={countdown === 0 ? 'blue': 'pink'}
