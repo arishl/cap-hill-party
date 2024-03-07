@@ -113,7 +113,7 @@ function App() {
     
     <Box width="100%">
     <Flex width="100%" m = "5%">
-      <Text style={{ textAlign: 'left' }} fontSize="xl">Welcome to the Cap Hill coding Challenge!</Text>
+      <Text style={{ textAlign: 'left' }} fontSize="xl">Welcome to The Cap Hill Coding Challenge!</Text>
       
     <Button ml = "30px"
       colorScheme={countdown === 0 ? 'green' : 'red'}
