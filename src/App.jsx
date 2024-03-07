@@ -148,14 +148,14 @@ function App() {
     </Button>
     </Flex>
       <Box>
-      <div className="code-box-wrapper">
-      <pre style={{ textAlign: 'center' }}>
-      <Code>
+      <div className="code-box-wrapper" style={{ display: 'flex', justifyContent: 'center' }}>
+      <pre style={{ textAlign: 'left' }}>
+      <Code >
         { Array.from(correctText).map((char, index) => (
           <Text
             key={index}
             display="inline"
-              color={index < inputText.length && inputText[index] === char ? 'green' : 'white'}
+              color={index < inputText.length && inputText[index] === char ? 'green' : 'black'}
             >
               {char}
             </Text>
