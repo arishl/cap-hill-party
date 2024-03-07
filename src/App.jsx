@@ -126,8 +126,6 @@ function App() {
         </pre>
     </Box>
     <Flex width="100%" m = "5%">
-      <Text style={{ textAlign: 'left' }} fontSize="xl">Welcome to The Cap Hill Coding Challenge!</Text>
-      
     <Button ml = "30px"
       colorScheme={countdown === 0 ? 'green' : 'red'}
       onClick={handleStartClick}
@@ -143,10 +141,14 @@ function App() {
     >
       {`WPM: ${Math.floor(charactersTyped/(60-countdown)/4*60)}`}
     </Button>
+    <Button ml = "30px"
+      colorScheme={wpmHighscore < Math.floor(charactersTyped/(60-countdown)/4*60) ? 'blue' : 'yellow'}>
+        {"WPM HIGHSCORE: " + wpmHighscore }
+    </Button>
     </Flex>
       <Box>
       <div className="code-box-wrapper">
-      <pre style={{ textAlign: 'left' }}>
+      <pre style={{ textAlign: 'center' }}>
       <Code>
         { Array.from(correctText).map((char, index) => (
           <Text
@@ -171,10 +173,7 @@ function App() {
         style={{ padding: '8px', fontSize: '16px', width: '100%', height: '100%', backgroundColor:'green' }} // Make textarea fill the box
       />
       </Box>
-      <Button ml = "30px"
-      colorScheme={wpmHighscore < Math.floor(charactersTyped/(60-countdown)/4*60) ? 'blue' : 'yellow'}>
-        {"WPM HIGHSCORE: " + wpmHighscore }
-      </Button>
+      
     </Box>
   );
 }
