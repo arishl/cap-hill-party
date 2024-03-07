@@ -7,6 +7,8 @@ import problems from './Problems.json'
 function App() {
   const [randomProblem, setRandomProblem] = useState('');
   const [correctText, setCorrectText] = useState("");
+  const [charactersTyped, setCharactersTyped] = useState(0);
+  const [finished, setFinished] = useState(false);
   // Function to generate a random index within the range of the array length
   const getRandomIndex = () => {
     return Math.floor(Math.random() * problems.problems.length);
@@ -16,7 +18,7 @@ function App() {
   const selectRandomProblem = () => {
     const randomIndex = getRandomIndex();
     console.log(problems.problems[randomIndex].solution)
-    setRandomProblem(problems.problems[randomIndex].solution);
+    setCorrectText(problems.problems[randomIndex].solution);
   };
 
   const [countdown, setCountdown] = useState(0);
@@ -26,23 +28,22 @@ function App() {
   useEffect(() => {
     let intervalId;
 
-    if (clicked) {
+    if (clicked && !finished) {
       intervalId = setInterval(() => {
         setCountdown(prevCountdown => prevCountdown - 1);
       }, 1000);
     }
 
     return () => clearInterval(intervalId);
-  }, [clicked]);
+  }, [clicked, finished]);
 
   const handleStartClick = () => {
-    
+    setFinished(false);
+    setCharactersTyped(0);
     selectRandomProblem();
     setInputText("");
     setClicked(true);
     setCountdown(60);
-    setCorrectText(randomProblem);
-    setCorrectText(randomProblem);
     
   };
 
@@ -75,7 +76,12 @@ function App() {
           } else {
             onNewLine = false;
           }
+          setCharactersTyped(charactersTyped + 1);
           setInputText(testText);
+        }
+        if(correctText.length === inputText.length){
+          console.log("FUCKKKKER");
+          setFinished(true);
         }
       } else {
         console.log(typedText+newChar)
@@ -112,7 +118,14 @@ function App() {
       disabled={clicked}
       
     >
+    
       {countdown === 0 ? 'Start' : `${countdown}`}
+    </Button>
+    <Button ml = "30px"
+      colorScheme={countdown === 0 ? 'blue': 'pink'}
+      
+    >
+      {`WPM: ${Math.floor(charactersTyped/(60-countdown)/4*60)}`}
     </Button>
     </Flex>
       <Box>
