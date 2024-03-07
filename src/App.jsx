@@ -173,12 +173,12 @@ function App() {
       <Box>
       <div className="code-box-wrapper" style={{ display: 'flex', justifyContent: 'center' }}>
       <pre style={{ textAlign: 'left' }}>
-      <Code >
+      <Code style={{ backgroundColor: '#164723'}}>
         { Array.from(correctText).map((char, index) => (
           <Text
             key={index}
             display="inline"
-              color={index < inputText.length && inputText[index] === char ? 'green' : 'black'}
+              color={index < inputText.length && inputText[index] === char ? '#16fa53' : 'white'}
             >
               {char}
             </Text>

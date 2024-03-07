@@ -1,89 +1,89 @@
 {
-    "problems": [
-      {
-        "problem": "Reverse a String",
-        "solution": "function reverseString(str) {\n  let reversedString = '';\n  for (let i = str.length - 1; i >= 0; i--) {\n    reversedString += str[i];\n  }\n  return reversedString;\n}"
-      },
-      {
-        "problem": "Factorialize a Number",
-        "solution": "function factorialize(num) {\n  if (num < 0) {\n    return -1;\n  } else if (num === 0) {\n    return 1;\n  } else {\n    let result = 1;\n    for (let i = 1; i <= num; i++) {\n      result *= i;\n    }\n    return result;\n  }\n}"
-      },
-      {
-        "problem": "Check for Palindromes",
-        "solution": "function palindrome(str) {\n  let cleanedStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');\n  let reversedStr = cleanedStr.split('').reverse().join('');\n  return cleanedStr === reversedStr;\n}"
-      },
-      {
-        "problem": "Find the Longest Word in a String",
-        "solution": "function findLongestWordLength(str) {\n  let longestWordLength = 0;\n  let words = str.split(' ');\n  for (let i = 0; i < words.length; i++) {\n    if (words[i].length > longestWordLength) {\n      longestWordLength = words[i].length;\n    }\n  }\n  return longestWordLength;\n}"
-      },
-      {
-        "problem": "Return Largest Numbers in Arrays",
-        "solution": "function largestOfFour(arr) {\n  let largestNumbers = [];\n  for (let i = 0; i < arr.length; i++) {\n    let largest = arr[i][0];\n    for (let j = 1; j < arr[i].length; j++) {\n      if (arr[i][j] > largest) {\n        largest = arr[i][j];\n      }\n    }\n    largestNumbers.push(largest);\n  }\n  return largestNumbers;\n}"
-      },
-      {
-        "problem": "Confirm the Ending",
-        "solution": "function confirmEnding(str, target) {\n  return str.slice(-target.length) === target;\n}"
-      },
-      {
-        "problem": "Repeat a String Repeat a String",
-        "solution": "function repeatStringNumTimes(str, num) {\n  let repeatedString = '';\n  while (num > 0) {\n    repeatedString += str;\n    num--;\n  }\n  return repeatedString;\n}"
-      },
-      {
-        "problem": "Truncate a String",
-        "solution": "function truncateString(str, num) {\n  return str.length > num ? str.slice(0, num) + '...' : str;\n}"
-      },
-      {
-        "problem": "Finders Keepers",
-        "solution": "function findElement(arr, func) {\n  return arr.find(func);\n}"
-      },
-      {
-        "problem": "Boo who",
-        "solution": "function booWho(bool) {\n  return typeof bool === 'boolean';\n}"
-      },
-      {
-        "problem": "Slice and Splice",
-        "solution": "function frankenSplice(arr1, arr2, n) {\n  let newArr = arr2.slice();\n  newArr.splice(n, 0, ...arr1);\n  return newArr;\n}"
-      },
-      {
-        "problem": "Falsy Bouncer",
-        "solution": "function bouncer(arr) {\n  return arr.filter(Boolean);\n}"
-      },
-      {
-        "problem": "Where do I Belong",
-        "solution": "function getIndexToIns(arr, num) {\n  return arr.concat(num).sort((a, b) => a - b).indexOf(num);\n}"
-      },
-      {
-        "problem": "Mutations",
-        "solution": "function mutation(arr) {\n  const [first, second] = arr.map(str => str.toLowerCase());\n  return second.split('').every(char => first.includes(char));\n}"
-      },
-      {
-        "problem": "Chunky Monkey",
-        "solution": "function chunkArrayInGroups(arr, size) {\n  let result = [];\n  for (let i = 0; i < arr.length; i += size) {\n    result.push(arr.slice(i, i + size));\n  }\n  return result;\n}"
-      },
-      {
-        "problem": "Sum All Numbers in a Range",
-        "solution": "function sumAll(arr) {\n  let [min, max] = [...arr].sort((a, b) => a - b);\n  return (max - min + 1) * (min + max) / 2;\n}"
-      },
-      {
-        "problem": "Diff Two Arrays",
-        "solution": "function diffArray(arr1, arr2) {\n  return arr1.filter(item => !arr2.includes(item)).concat(arr2.filter(item => !arr1.includes(item)));\n}"
-      },
-      {
-        "problem": "Seek and Destroy",
-        "solution": "function destroyer(arr, ...args) {\n  return arr.filter(item => !args.includes(item));\n}"
-      },
-      {
-        "problem": "Wherefore art thou",
-        "solution": "function whatIsInAName(collection, source) {\n  let keys = Object.keys(source);\n  return collection.filter(obj => keys.every(key => obj.hasOwnProperty(key) && obj[key] === source[key]));\n}"
-      },
-      {
-        "problem": "Reverse an Array",
-        "solution": "function reverseArray(arr) {\n  let reversedArray = [];\n  for (let i = arr.length - 1; i >= 0; i--) {\n    reversedArray.push(arr[i]);\n  }\n  return reversedArray;\n}"
-      },
-      {
-        "problem": "Find the Missing Letter",
-        "solution": "function fearNotLetter(str) {\n  for (let i = 0; i < str.length - 1; i++) {\n    if (str.charCodeAt(i + 1) - str.charCodeAt(i) > 1) {\n      return String.fromCharCode(str.charCodeAt(i) + 1);\n    }\n  }\n  return undefined;\n}"
-      }
+  "problems": [
+    {
+      "problem": "Reverse a String",
+      "solution": "function hackTheString(encryptionKey) {\n  let decryptedString = '';\n  for (let i = encryptionKey.length - 1; i >= 0; i--) {\n    decryptedString += encryptionKey[i];\n  }\n  return decryptedString;\n}"
+    },
+    {
+      "problem": "Factorialize a Number",
+      "solution": "function breachFactorialLockdown(securityCode) {\n  if (securityCode < 0) {\n    return -1;\n  } else if (securityCode === 0) {\n    return 1;\n  } else {\n    let bypassCode = 1;\n    for (let i = 1; i <= securityCode; i++) {\n      bypassCode *= i;\n    }\n    return bypassCode;\n  }\n}"
+    },
+    {
+      "problem": "Check for Palindromes",
+      "solution": "function infiltratePalindromeDetection(encryptionProtocol) {\n  let decryptedProtocol = encryptionProtocol.toLowerCase().replace(/[^a-z0-9]/g, '');\n  let decryptedReverse = decryptedProtocol.split('').reverse().join('');\n  return decryptedProtocol === decryptedReverse;\n}"
+    },
+    {
+      "problem": "Find the Longest Word in a String",
+      "solution": "function crackLongestWord(mainframeData) {\n  let longestWordExtraction = 0;\n  let breachWords = mainframeData.split(' ');\n  for (let i = 0; i < breachWords.length; i++) {\n    if (breachWords[i].length > longestWordExtraction) {\n      longestWordExtraction = breachWords[i].length;\n    }\n  }\n  return longestWordExtraction;\n}"
+    },
+    {
+      "problem": "Return Largest Numbers in Arrays",
+      "solution": "function bypassArrayFirewall(hackedArrays) {\n  let maxNumbersRetrieved = [];\n  for (let i = 0; i < hackedArrays.length; i++) {\n    let max = hackedArrays[i][0];\n    for (let j = 1; j < hackedArrays[i].length; j++) {\n      if (hackedArrays[i][j] > max) {\n        max = hackedArrays[i][j];\n      }\n    }\n    maxNumbersRetrieved.push(max);\n  }\n  return maxNumbersRetrieved;\n}"
+    },
+    {
+      "problem": "Confirm the Ending",
+      "solution": "function decryptEndingCode(encryptionCode, targetCode) {\n  return encryptionCode.slice(-targetCode.length) === targetCode;\n}"
+    },
+    {
+      "problem": "Repeat a String Repeat a String",
+      "solution": "function executeRepeatLoop(encryptedString, loopCounter) {\n  let repeatedString = '';\n  while (loopCounter > 0) {\n    repeatedString += encryptedString;\n    loopCounter--;\n  }\n  return repeatedString;\n}"
+    },
+    {
+      "problem": "Truncate a String",
+      "solution": "function hackTruncate(mainframeData, maxCharacters) {\n  return mainframeData.length > maxCharacters ? mainframeData.slice(0, maxCharacters) + '...' : mainframeData;\n}"
+    },
+    {
+      "problem": "Finders Keepers",
+      "solution": "function findValuableData(mainframeData, accessFunction) {\n  return mainframeData.find(accessFunction);\n}"
+    },
+    {
+      "problem": "Boo who",
+      "solution": "function hackBooleanFirewall(breachConfirmation) {\n  return typeof breachConfirmation === 'boolean';\n}"
+    },
+    {
+      "problem": "Slice and Splice",
+      "solution": "function manipulateSlicedData(initialData, alteredData, insertionPoint) {\n  let modifiedData = alteredData.slice();\n  modifiedData.splice(insertionPoint, 0, ...initialData);\n  return modifiedData;\n}"
+    },
+    {
+      "problem": "Falsy Bouncer",
+      "solution": "function bypassFalsyFilter(hackedData) {\n  return hackedData.filter(Boolean);\n}"
+    },
+    {
+      "problem": "Where do I Belong",
+      "solution": "function infiltrateDataIndex(hackedData, targetData) {\n  return hackedData.concat(targetData).sort((a, b) => a - b).indexOf(targetData);\n}"
+    },
+    {
+      "problem": "Mutations",
+      "solution": "function modifyData(securityBreachData) {\n  const [primaryData, secondaryData] = securityBreachData.map(hackedString => hackedString.toLowerCase());\n  return secondaryData.split('').every(decryptedChar => primaryData.includes(decryptedChar));\n}"
+    },
+    {
+      "problem": "Chunky Monkey",
+      "solution": "function manipulateDataChunks(mainframeData, chunkSize) {\n  let modifiedData = [];\n  for (let i = 0; i < mainframeData.length; i += chunkSize) {\n    modifiedData.push(mainframeData.slice(i, i + chunkSize));\n  }\n  return modifiedData;\n}"
+    },
+    {
+      "problem": "Sum All Numbers in a Range",
+      "solution": "function hackTheNumbers(securityBreach) {\n  let [min, max] = [...securityBreach].sort((a, b) => a - b);\n  return (max - min + 1) * (min + max) / 2;\n}"
+    },
+    {
+      "problem": "Diff Two Arrays",
+      "solution": "function breachArraySecurity(dataArray1, dataArray2) {\n  return dataArray1.filter(item => !dataArray2.includes(item)).concat(dataArray2.filter(item => !dataArray1.includes(item)));\n}"
+    },
+    {
+      "problem": "Seek and Destroy",
+      "solution": "function infiltrateAndDestroy(dataArray, ...targetData) {\n  return dataArray.filter(item => !targetData.includes(item));\n}"
+    },
+    {
+      "problem": "Wherefore art thou",
+      "solution": "function identifyTarget(collectionData, targetSource) {\n  let accessKeys = Object.keys(targetSource);\n  return collectionData.filter(obj => accessKeys.every(key => obj.hasOwnProperty(key) && obj[key] === targetSource[key]));\n}"
+    },
+    {
+      "problem": "Reverse an Array",
+      "solution": "function hackReverseArray(dataArray) {\n  let reversedDataArray = [];\n  for (let i = dataArray.length - 1; i >= 0; i--) {\n    reversedDataArray.push(dataArray[i]);\n  }\n  return reversedDataArray;\n}"
+    },
+    {
+      "problem": "Find the Missing Letter",
+      "solution": "function detectMissingLetter(encryptionData) {\n  for (let i = 0; i < encryptionData.length - 1; i++) {\n    if (encryptionData.charCodeAt(i + 1) - encryptionData.charCodeAt(i) > 1) {\n      return String.fromCharCode(encryptionData.charCodeAt(i) + 1);\n    }\n  }\n  return undefined;\n}"
+    }
     ]
   }
   
