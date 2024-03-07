@@ -3,14 +3,15 @@ import './App.css'
 import { ChakraProvider, Button } from '@chakra-ui/react';
 import { Text, Box, Flex, Code, Input } from '@chakra-ui/react';
 import problems from './Problems.json'
+import Cookies from 'js-cookie';
 
 function App() {
   const [correctText, setCorrectText] = useState("");
   const [charactersTyped, setCharactersTyped] = useState(0);
   const [finished, setFinished] = useState(false);
-  const [wpmHighscore, setWpmHighscore] = useState(10);
+  const [wpmHighscore, setWpmHighscore] = useState(Cookies.get('highscorevalue'));
   const [currentName, setCurrentName] = useState("");
-  const [highscoreName, setHighscoreName] = useState("");
+  const [highscoreName, setHighscoreName] = useState(Cookies.get('highscorename'));
   // Function to generate a random index within the range of the array length
   const getRandomIndex = () => {
     return Math.floor(Math.random() * problems.problems.length);
@@ -91,6 +92,8 @@ function App() {
           if (wpmHighscore < Math.floor(charactersTyped/(60-countdown)/4*60)){
             setWpmHighscore(Math.floor(charactersTyped/(60-countdown)/4*60));
             setHighscoreName(currentName);
+            Cookies.set('highscorename', currentName, { expires: 7 });
+            Cookies.set('highscorevalue', Math.floor(charactersTyped/(60-countdown)/4*60), { expires: 7 });
           }
         }
       } else {
