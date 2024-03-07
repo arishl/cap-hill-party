@@ -6,7 +6,7 @@ import problems from './Problems.json'
 import Cookies from 'js-cookie';
 
 function App() {
-  if (Cookies.get('highscorevalue')==0){
+  if (Cookies.get('highscorevalue')==null){
     Cookies.set('highscorevalue', 0, { expires: 7 });
   }
   const [correctText, setCorrectText] = useState("");
