@@ -15,7 +15,8 @@ function App() {
   // Function to select a random problem from the JSON data
   const selectRandomProblem = () => {
     const randomIndex = getRandomIndex();
-    setRandomProblem(problems.problems[randomIndex]);
+    console.log(problems.problems[randomIndex].solution)
+    setRandomProblem(problems.problems[randomIndex].solution);
   };
 
   const [countdown, setCountdown] = useState(0);
@@ -36,11 +37,9 @@ function App() {
   const handleStartClick = () => {
     
     selectRandomProblem();
-    const a = randomProblem.solution;
-    console.log(a);
     setClicked(true);
     setCountdown(60);
-    setCorrectText(a);
+    setCorrectText(randomProblem);
     
   };
 
@@ -87,7 +86,7 @@ function App() {
       <Box>
       <pre style={{ textAlign: 'left' }}>
       <Code>
-        {Array.from(correctText).map((char, index) => (
+        { Array.from(correctText).map((char, index) => (
           <Text
             key={index}
             display="inline"
