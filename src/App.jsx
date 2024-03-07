@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css'
-import { Button } from '@chakra-ui/react';
+import { ChakraProvider, Button } from '@chakra-ui/react';
 import { Text, Box, Flex, Code } from '@chakra-ui/react';
 import problems from './Problems.json'
 
@@ -110,8 +110,21 @@ function App() {
 
   return (
     <Box>
-    
-    <Box width="100%">
+    <Box>
+    <pre style={{ textAlign: 'left' }}>
+          {`
+                         )                  )                                                                                        
+   (                  ( /(      (   (    ( /(                )                      (       )        (   (                           
+   )\\      )          )\\()) (   )\\  )\\   )\\())    )       ( /( (          (  (      )\\   ( /(     )  )\\  )\\   (         (  (     (   
+ (((_)  ( /(  \`  )   ((_)\  )\\ ((_)((_) ((_)\  ( /(   (   )\\()))\\   (     )\\))(   (((_)  )\\()) ( /( ((_)((_) ))\\  (     )\\))(   ))\\  
+ )\\___  )(_)) /(/(    _((_)((_) _   _    _((_) )(_))  )\\ ((_)\((_)  )\\ ) ((_))\\   )\\___ ((_)\  )(_)) _   _  /((_) )\\ ) ((_))\\  /((_) 
+((/ __|((_)_ ((_)_\\  | || | (_)| | | |  | || |((_)_  ((_)| |(_)(_) _(_/(  (()(_) ((/ __|| |(_)((_)_ | | | |(_))  _(_/(  (()(_)(_))   
+ | (__ / _\` || '_ \\) | __ | | || | | |  | __ |/ _\` |/ _| | / / | || ' \\))/ _\` |   | (__ | ' \\ / _\` || | | |/ -_)| ' \\))/ _\` | / -_)  
+  \\___|\\__,_|| .__/  |_||_| |_||_| |_|  |_||_|\\__,_|\\__| |\\_\\_\\ |_||_||_| \\__, |    \\___||_||_|\__,_||_| |_|\\___||_||_| \\__, | \\___|  
+             |_|                                                         |___/                                         |___/          
+          `}
+        </pre>
+    </Box>
     <Flex width="100%" m = "5%">
       <Text style={{ textAlign: 'left' }} fontSize="xl">Welcome to The Cap Hill Coding Challenge!</Text>
       
@@ -132,35 +145,36 @@ function App() {
     </Button>
     </Flex>
       <Box>
+      <div className="code-box-wrapper">
       <pre style={{ textAlign: 'left' }}>
       <Code>
         { Array.from(correctText).map((char, index) => (
           <Text
             key={index}
             display="inline"
-            color={index < inputText.length && inputText[index] === char ? 'green' : 'inherit'}
-          >
-            {char}
-          </Text>
-        ))}
-        </Code>
-        </pre>
+              color={index < inputText.length && inputText[index] === char ? 'green' : 'white'}
+            >
+              {char}
+            </Text>
+          ))}
+          </Code>
+          </pre>
+        </div>
       </Box>
-      <Box mt={4} width="100%" height="300px"> {/* Adjust width and height as needed */}
+      <Box mt={4} width="100%" height="300px" style={{ backgroundColor: 'black' }}> {/* Adjust width and height as needed */}
         <textarea
         type="text"
         value={inputText.slice(-50)}
         onKeyDown={handleKeyDown}
         onChange={handleInputChange}
-        placeholder="Start typing..."
-        style={{ padding: '8px', fontSize: '16px', width: '100%', height: '100%' }} // Make textarea fill the box
+        placeholder="Start hacking..."
+        style={{ padding: '8px', fontSize: '16px', width: '100%', height: '100%', backgroundColor:'green' }} // Make textarea fill the box
       />
       </Box>
       <Button ml = "30px"
       colorScheme={wpmHighscore < Math.floor(charactersTyped/(60-countdown)/4*60) ? 'blue' : 'yellow'}>
         {"WPM HIGHSCORE: " + wpmHighscore }
       </Button>
-    </Box>
     </Box>
   );
 }
