@@ -38,8 +38,10 @@ function App() {
   const handleStartClick = () => {
     
     selectRandomProblem();
+    setInputText("");
     setClicked(true);
     setCountdown(60);
+    setCorrectText(randomProblem);
     setCorrectText(randomProblem);
     
   };
