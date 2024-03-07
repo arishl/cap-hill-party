@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css'
 import { ChakraProvider, Button } from '@chakra-ui/react';
-import { Text, Box, Flex, Code } from '@chakra-ui/react';
+import { Text, Box, Flex, Code, Input } from '@chakra-ui/react';
 import problems from './Problems.json'
 
 function App() {
@@ -9,6 +9,8 @@ function App() {
   const [charactersTyped, setCharactersTyped] = useState(0);
   const [finished, setFinished] = useState(false);
   const [wpmHighscore, setWpmHighscore] = useState(10);
+  const [currentName, setCurrentName] = useState("");
+  const [highscoreName, setHighscoreName] = useState("");
   // Function to generate a random index within the range of the array length
   const getRandomIndex = () => {
     return Math.floor(Math.random() * problems.problems.length);
@@ -52,7 +54,11 @@ function App() {
       setClicked(false);
     }
   }, [countdown]);
-  const [inputText, setInputText] = useState(''); // Change this to your desired correct text
+  const [inputText, setInputText] = useState('');
+
+  const handleCurrentNameChange = (event) => {
+    setCurrentName(event.target.value); // Update the input value state
+  }; // Change this to your desired correct text
 
   const handleInputChange= (event) => {
     if (countdown != 0){
@@ -84,6 +90,7 @@ function App() {
           setFinished(true);
           if (wpmHighscore < Math.floor(charactersTyped/(60-countdown)/4*60)){
             setWpmHighscore(Math.floor(charactersTyped/(60-countdown)/4*60));
+            setHighscoreName(currentName);
           }
         }
       } else {
@@ -127,6 +134,14 @@ function App() {
     </Box>
     <Flex width="100%" mb = "1%" justifyContent="center"
   alignItems="center" >
+  <Input
+      placeholder="Enter name"
+      variant="outline"
+      size="md"
+      width="20%" mr = "4%"
+      value={currentName} // Bind the value to the state
+      onChange={handleCurrentNameChange}
+    />
     <Button 
       colorScheme={countdown === 0 ? 'green' : 'red'}
       onClick={handleStartClick}
@@ -144,7 +159,7 @@ function App() {
     </Button>
     <Button ml = "30px"
       colorScheme={wpmHighscore < Math.floor(charactersTyped/(60-countdown)/4*60) ? 'blue' : 'yellow'}>
-        {"WPM HIGHSCORE: " + wpmHighscore }
+        {wpmHighscore < Math.floor(charactersTyped/(60-countdown)/4*60) ? "WPM HIGHSCORE: " + Math.floor(charactersTyped/(60-countdown)/4*60) + " - " + currentName + "???" : "WPM HIGHSCORE: " + wpmHighscore + " - " + highscoreName}
     </Button>
     </Flex>
       <Box>
