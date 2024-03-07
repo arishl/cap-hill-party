@@ -6,6 +6,9 @@ import problems from './Problems.json'
 import Cookies from 'js-cookie';
 
 function App() {
+  if (Cookies.get('highscorevalue')===0){
+    Cookies.set('highscorevalue', 0);
+  }
   const [correctText, setCorrectText] = useState("");
   const [charactersTyped, setCharactersTyped] = useState(0);
   const [finished, setFinished] = useState(false);
