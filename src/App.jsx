@@ -21,6 +21,7 @@ function App() {
 
   const [countdown, setCountdown] = useState(0);
   const [clicked, setClicked] = useState(false);
+  let onNewLine = true;
 
   useEffect(() => {
     let intervalId;
@@ -52,11 +53,40 @@ function App() {
 
   const handleInputChange= (event) => {
     if (countdown != 0){
-      const typedText = inputText + event.target.value.slice(-1); // Get the last 5 characters
-
-    // Check if the typed text matches the correct text
-      if (correctText.startsWith(typedText)) {
-        setInputText(typedText);
+      let correct = false;
+      let newChar = event.target.value.slice(-1); // newest character
+      const searchSize = 50; // number of spaces ahead to search
+      const typedText = inputText;
+      if (onNewLine) { // if we are on a new line, perform search
+        let testText = typedText + newChar; // first try the character they entered
+        for (let i = 1; i <= searchSize; i++) {
+          if (correctText.startsWith(testText)) { // check if correct
+            correct = true;
+            break;
+          } else {
+            testText = typedText + " ".repeat(i) + newChar; // add variable spaces
+          }
+        }
+        if (correct) {
+          if (event.key == 'Enter') {
+            onNewLine = true;
+          } else {
+            onNewLine = false;
+          }
+          setInputText(testText);
+        }
+      } else {
+        console.log(typedText+newChar)
+        if (correctText.startsWith(typedText + newChar)) {
+          if (event.key == 'Enter') {
+              console.log("KEY IS ENTER");
+            onNewLine = true;
+          } else {
+            console.log("NOT ENTER");
+            onNewLine = false;
+          }
+          setInputText(typedText + newChar);
+        }
       }
     }
     
