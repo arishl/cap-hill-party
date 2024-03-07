@@ -125,8 +125,9 @@ function App() {
           `}
         </pre>
     </Box>
-    <Flex width="100%" m = "5%">
-    <Button ml = "30px"
+    <Flex width="100%" mb = "1%" justifyContent="center"
+  alignItems="center" >
+    <Button 
       colorScheme={countdown === 0 ? 'green' : 'red'}
       onClick={handleStartClick}
       disabled={clicked}
