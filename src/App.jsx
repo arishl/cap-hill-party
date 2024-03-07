@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 
 function App() {
   if (Cookies.get('highscorevalue')==0){
-    Cookies.set('highscorevalue', 0);
+    Cookies.set('highscorevalue', 0, { expires: 7 });
   }
   const [correctText, setCorrectText] = useState("");
   const [charactersTyped, setCharactersTyped] = useState(0);
