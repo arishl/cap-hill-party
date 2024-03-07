@@ -5,10 +5,10 @@ import { Text, Box, Flex, Code } from '@chakra-ui/react';
 import problems from './Problems.json'
 
 function App() {
-  const [randomProblem, setRandomProblem] = useState('');
   const [correctText, setCorrectText] = useState("");
   const [charactersTyped, setCharactersTyped] = useState(0);
   const [finished, setFinished] = useState(false);
+  const [wpmHighscore, setWpmHighscore] = useState(10);
   // Function to generate a random index within the range of the array length
   const getRandomIndex = () => {
     return Math.floor(Math.random() * problems.problems.length);
@@ -82,6 +82,9 @@ function App() {
         if(correctText.length === inputText.length){
           console.log("FUCKKKKER");
           setFinished(true);
+          if (wpmHighscore < Math.floor(charactersTyped/(60-countdown)/4*60)){
+            setWpmHighscore(Math.floor(charactersTyped/(60-countdown)/4*60));
+          }
         }
       } else {
         console.log(typedText+newChar)
@@ -153,6 +156,10 @@ function App() {
         style={{ padding: '8px', fontSize: '16px', width: '100%', height: '100%' }} // Make textarea fill the box
       />
       </Box>
+      <Button ml = "30px"
+      colorScheme={wpmHighscore < Math.floor(charactersTyped/(60-countdown)/4*60) ? 'blue' : 'yellow'}>
+        {"WPM HIGHSCORE: " + wpmHighscore }
+      </Button>
     </Box>
     </Box>
   );
