@@ -2,8 +2,22 @@ import { useState, useEffect } from 'react';
 import './App.css'
 import { Button } from '@chakra-ui/react';
 import { Text, Box, Flex, Code } from '@chakra-ui/react';
+import problems from './Problems.json'
 
 function App() {
+  const [randomProblem, setRandomProblem] = useState('');
+  const [correctText, setCorrectText] = useState("");
+  // Function to generate a random index within the range of the array length
+  const getRandomIndex = () => {
+    return Math.floor(Math.random() * problems.problems.length);
+  };
+
+  // Function to select a random problem from the JSON data
+  const selectRandomProblem = () => {
+    const randomIndex = getRandomIndex();
+    setRandomProblem(problems.problems[randomIndex]);
+  };
+
   const [countdown, setCountdown] = useState(0);
   const [clicked, setClicked] = useState(false);
 
@@ -20,8 +34,14 @@ function App() {
   }, [clicked]);
 
   const handleStartClick = () => {
+    
+    selectRandomProblem();
+    const a = randomProblem.solution;
+    console.log(a);
     setClicked(true);
     setCountdown(60);
+    setCorrectText(a);
+    
   };
 
   useEffect(() => {
@@ -29,16 +49,7 @@ function App() {
       setClicked(false);
     }
   }, [countdown]);
-  const [inputText, setInputText] = useState('');
-  const correctText =
-`def factorial(n):
-  if n == 0:
-    return 1
-  else:
-    return n * factorial(n-1)
-num = 5
-print("Factorial of", num, "is", factorial(num))
-`; // Change this to your desired correct text
+  const [inputText, setInputText] = useState(''); // Change this to your desired correct text
 
   const handleInputChange= (event) => {
     if (countdown != 0){

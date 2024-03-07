@@ -1,0 +1,80 @@
+{
+    "problems": [
+      {
+        "problem": "Reverse a String",
+        "solution": "function reverseString(str) {\n  return str.split('').reverse().join('');\n}"
+      },
+      {
+        "problem": "Factorialize a Number",
+        "solution": "function factorialize(num) {\n  if (num < 0) {\n    return -1;\n  } else if (num == 0) {\n    return 1;\n  } else {\n    return (num * factorialize(num - 1));\n  }\n}"
+      },
+      {
+        "problem": "Check for Palindromes",
+        "solution": "function palindrome(str) {\n  str = str.toLowerCase().replace(/[^a-z0-9]/g, '');\n  return str === str.split('').reverse().join('');\n}"
+      },
+      {
+        "problem": "Find the Longest Word in a String",
+        "solution": "function findLongestWordLength(str) {\n  let longestWord = 0;\n  str.split(' ').forEach(word => {\n    if (word.length > longestWord) {\n      longestWord = word.length;\n    }\n  });\n  return longestWord;\n}"
+      },
+      {
+        "problem": "Return Largest Numbers in Arrays",
+        "solution": "function largestOfFour(arr) {\n  return arr.map(subArr => Math.max(...subArr));\n}"
+      },
+      {
+        "problem": "Confirm the Ending",
+        "solution": "function confirmEnding(str, target) {\n  return str.endsWith(target);\n}"
+      },
+      {
+        "problem": "Repeat a String Repeat a String",
+        "solution": "function repeatStringNumTimes(str, num) {\n  return num > 0 ? str.repeat(num) : '';\n}"
+      },
+      {
+        "problem": "Truncate a String",
+        "solution": "function truncateString(str, num) {\n  return str.length > num ? str.slice(0, num) + '...' : str;\n}"
+      },
+      {
+        "problem": "Finders Keepers",
+        "solution": "function findElement(arr, func) {\n  return arr.find(func);\n}"
+      },
+      {
+        "problem": "Boo who",
+        "solution": "function booWho(bool) {\n  return typeof bool === 'boolean';\n}"
+      },
+      {
+        "problem": "Slice and Splice",
+        "solution": "function frankenSplice(arr1, arr2, n) {\n  let newArr = arr2.slice();\n  newArr.splice(n, 0, ...arr1);\n  return newArr;\n}"
+      },
+      {
+        "problem": "Falsy Bouncer",
+        "solution": "function bouncer(arr) {\n  return arr.filter(Boolean);\n}"
+      },
+      {
+        "problem": "Where do I Belong",
+        "solution": "function getIndexToIns(arr, num) {\n  return arr.concat(num).sort((a, b) => a - b).indexOf(num);\n}"
+      },
+      {
+        "problem": "Mutations",
+        "solution": "function mutation(arr) {\n  const [first, second] = arr.map(str => str.toLowerCase());\n  return second.split('').every(char => first.includes(char));\n}"
+      },
+      {
+        "problem": "Chunky Monkey",
+        "solution": "function chunkArrayInGroups(arr, size) {\n  let result = [];\n  for (let i = 0; i < arr.length; i += size) {\n    result.push(arr.slice(i, i + size));\n  }\n  return result;\n}"
+      },
+      {
+        "problem": "Sum All Numbers in a Range",
+        "solution": "function sumAll(arr) {\n  let [min, max] = [...arr].sort((a, b) => a - b);\n  return (max - min + 1) * (min + max) / 2;\n}"
+      },
+      {
+        "problem": "Diff Two Arrays",
+        "solution": "function diffArray(arr1, arr2) {\n  return arr1.filter(item => !arr2.includes(item)).concat(arr2.filter(item => !arr1.includes(item)));\n}"
+      },
+      {
+        "problem": "Seek and Destroy",
+        "solution": "function destroyer(arr, ...args) {\n  return arr.filter(item => !args.includes(item));\n}"
+      },
+      {
+        "problem": "Wherefore art thou",
+        "solution": "function whatIsInAName(collection, source) {\n  let keys = Object.keys(source);\n  return collection.filter(obj => keys.every(key => obj.hasOwnProperty(key) && obj[key] === source[key]));\n}"
+      }
+    ]
+  }
