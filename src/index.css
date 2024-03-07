@@ -17,6 +17,10 @@ h1 {
   line-height: 1.1;
 }
 
+textarea::placeholder {
+  color: #027e32; /* Placeholder color */
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
