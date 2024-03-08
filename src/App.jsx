@@ -170,7 +170,7 @@ function App() {
         {wpmHighscore < Math.floor(charactersTyped/(60-countdown)/4*60) ? "WPM HIGHSCORE: " + Math.floor(charactersTyped/(60-countdown)/4*60) + " - " + currentName + "???" : "WPM HIGHSCORE: " + wpmHighscore + " - " + highscoreName}
     </Button>
     </Flex>
-      <Box>
+      <Box height = "100%">
       <div className="code-box-wrapper" style={{ display: 'flex', justifyContent: 'center' }}>
       <pre style={{ textAlign: 'left' }}>
       <Code style={{ backgroundColor: '#164723'}}>
@@ -187,8 +187,9 @@ function App() {
           </pre>
         </div>
       </Box>
-      <Box mt={4} width="100%" height="300px" style={{ backgroundColor: 'black' }}> {/* Adjust width and height as needed */}
+      <Box mt={4} width="100%" height="100px" style={{ backgroundColor: 'black' }}> {/* Adjust width and height as needed */}
         <textarea
+        height="100%"
         type="text"
         value={inputText.slice(-50)}
         onKeyDown={handleKeyDown}
