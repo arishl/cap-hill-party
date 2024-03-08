@@ -35,7 +35,7 @@ function IntroPage() {
       Begin
     </Button>
     </Link>
-    <MatrixBackground/>
+    <MatrixBackground />
     </Box>
   );
 }

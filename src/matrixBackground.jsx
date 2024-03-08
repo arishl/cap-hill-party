@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import './matrixBackground.css';
 
-const MatrixBackground = () => {
+const MatrixBackground = ({ color }) => {
   useEffect(() => {
     const createMatrixEffect = () => {
       const matrixContainer = document.getElementById('matrix-container');
@@ -23,6 +23,7 @@ const MatrixBackground = () => {
         for (let j = 0; j < numChars; j++) {
           const char = document.createElement('span');
           char.textContent = chars[Math.floor(Math.random() * chars.length)];
+          char.style.color = color; 
           column.appendChild(char);
         }
       }
@@ -36,6 +37,7 @@ const MatrixBackground = () => {
           const firstChar = column.children[0];
           const newChar = document.createElement('span');
           newChar.textContent = chars[Math.floor(Math.random() * chars.length)];
+          newChar.style.color = color;
           column.removeChild(firstChar);
           column.appendChild(newChar);
         }
@@ -48,7 +50,7 @@ const MatrixBackground = () => {
     return () => {
       clearInterval();
     };
-  }, []);
+  }, [color]);
 
   return (
     <div id="matrix-container" className="matrix-container"></div>

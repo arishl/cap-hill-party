@@ -9,6 +9,7 @@ import {
   Route,
 } from "react-router-dom";
 import IntroPage from './IntroPage'
+import CompletionPage from './completion'
 
 const theme = extendTheme({
   styles: {
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <Router>
     <Routes>
     <Route path="/intro" element={<ChakraProvider theme={theme}><IntroPage/></ChakraProvider>}/>
+    <Route path="/completion" element={<ChakraProvider theme={theme}><CompletionPage /></ChakraProvider>} />
     <Route exact path="/" element={<ChakraProvider theme={theme}><App /></ChakraProvider>} />
     </Routes>
   </Router>

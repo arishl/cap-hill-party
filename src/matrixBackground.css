@@ -21,6 +21,23 @@
     transform: translateY(-100%);
     animation: fall 10s linear infinite; /* Increase animation duration */
   }
+  .matrix-column-yellow span {
+    display: block;
+    color: #e6e65a;
+    font-size: 16px;
+    font-family: monospace;
+    transform: translateY(-100%);
+    animation: fall 10s linear infinite; /* Increase animation duration */
+  }
+  .matrix-column-red span {
+    display: block;
+    color: #e43030;
+    font-size: 16px;
+    font-family: monospace;
+    transform: translateY(-100%);
+    animation: fall 10s linear infinite; /* Increase animation duration */
+  }
+
   
   @keyframes fall {
     from {
