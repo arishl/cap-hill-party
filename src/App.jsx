@@ -96,7 +96,7 @@ function App() {
         if(correctText.length === inputText.length){
           console.log("FUCKKKKER");
           if(!finished){
-            setDataGathered(dataGathered + charactersTyped);
+            setDataGathered(parseInt(parseInt(dataGathered) + parseInt(charactersTyped)));
             Cookies.set('datagathered', dataGathered,{expires: 7});
           }
           setFinished(true);
