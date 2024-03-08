@@ -17,7 +17,7 @@ const MatrixBackground = () => {
         matrixContainer.appendChild(column);
 
         // Determine the number of characters for this column (between 5 and 15)
-        const numChars = Math.floor(Math.random() * 2) + 5;
+        const numChars = Math.floor(Math.random() * 11) + 5;
         
         // Fill columns with random characters
         for (let j = 0; j < numChars; j++) {
@@ -29,6 +29,7 @@ const MatrixBackground = () => {
 
       // Animate falling characters
       setInterval(() => {
+        
         const columns = matrixContainer.children;
         for (let i = 0; i < columns.length; i++) {
           const column = columns[i];
@@ -38,7 +39,7 @@ const MatrixBackground = () => {
           column.removeChild(firstChar);
           column.appendChild(newChar);
         }
-      }, 300); // Increase the interval for slower fall
+      }, 100); // Increase the interval for slower fall
     };
 
     createMatrixEffect();

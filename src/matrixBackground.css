@@ -15,19 +15,19 @@
   
   .matrix-column span {
     display: block;
-    color: lime;
+    color: #5ae67f;
     font-size: 16px;
     font-family: monospace;
     transform: translateY(-100%);
-    animation: fall 2s linear infinite; /* Increase animation duration */
+    animation: fall 10s linear infinite; /* Increase animation duration */
   }
   
   @keyframes fall {
     from {
-      transform: translateY(-100%);
+      transform: translateY(1500%);
     }
     to {
-      transform: translateY(100%);
+      transform: translateY(500%);
     }
   }
   
