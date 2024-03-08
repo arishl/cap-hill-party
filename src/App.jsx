@@ -4,6 +4,7 @@ import {Button } from '@chakra-ui/react';
 import { Text, Box, Flex, Code, Input } from '@chakra-ui/react';
 import problems from './Problems.json'
 import Cookies from 'js-cookie';
+import MatrixBackground from './matrixBackground';
 
 function App() {
   if (Cookies.get('highscorevalue')==null){
@@ -132,6 +133,7 @@ function App() {
 
   return (
     <Box>
+    
     
     <Box>
     <pre style={{ textAlign: 'center', fontSize: '11px', color:'#5ae67f'}}>
