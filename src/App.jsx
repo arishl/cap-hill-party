@@ -9,12 +9,16 @@ function App() {
   if (Cookies.get('highscorevalue')==null){
     Cookies.set('highscorevalue', 0, { expires: 7 });
   }
+  if (Cookies.get('datagathered')==null){
+    Cookies.set('datagathered', 0, { expires: 7 });
+  }
   const [correctText, setCorrectText] = useState("");
   const [charactersTyped, setCharactersTyped] = useState(0);
   const [finished, setFinished] = useState(false);
   const [wpmHighscore, setWpmHighscore] = useState(Cookies.get('highscorevalue'));
   const [currentName, setCurrentName] = useState("");
   const [highscoreName, setHighscoreName] = useState(Cookies.get('highscorename'));
+  const [dataGathered, setDataGathered] = useState(Cookies.get('datagathered'));
   // Function to generate a random index within the range of the array length
   const getRandomIndex = () => {
     return Math.floor(Math.random() * problems.problems.length);
@@ -91,7 +95,12 @@ function App() {
         }
         if(correctText.length === inputText.length){
           console.log("FUCKKKKER");
+          if(!finished){
+            setDataGathered(dataGathered + charactersTyped);
+            Cookies.set('datagathered', dataGathered,{expires: 7});
+          }
           setFinished(true);
+          
           if (wpmHighscore < Math.floor(charactersTyped/(60-countdown)/4*60)){
             setWpmHighscore(Math.floor(charactersTyped/(60-countdown)/4*60));
             setHighscoreName(currentName);
@@ -143,7 +152,7 @@ function App() {
     <Flex width="100%" mb = "1%" justifyContent="center"
   alignItems="center" >
   <Input
-      placeholder="Enter name"
+      placeholder="Enter credentials"
       variant="outline"
       size="md"
       width="20%" mr = "4%"
@@ -168,6 +177,10 @@ function App() {
     <Button ml = "30px"
       colorScheme={wpmHighscore < Math.floor(charactersTyped/(60-countdown)/4*60) ? 'blue' : 'yellow'}>
         {wpmHighscore < Math.floor(charactersTyped/(60-countdown)/4*60) ? "WPM HIGHSCORE: " + Math.floor(charactersTyped/(60-countdown)/4*60) + " - " + currentName + "???" : "WPM HIGHSCORE: " + wpmHighscore + " - " + highscoreName}
+    </Button>
+    <Button ml = "30px"
+      colorScheme='orange'>
+        {"Data retrieved: " + dataGathered}
     </Button>
     </Flex>
       <Box height = "100%">
@@ -194,7 +207,7 @@ function App() {
         value={inputText.slice(-50)}
         onKeyDown={handleKeyDown}
         onChange={handleInputChange}
-        placeholder="Start hacking Neo..."
+        placeholder={"Start hacking " + currentName + "..."}
         style={{ padding: '8px', fontSize: '16px', width: '100%', height: '100%', backgroundColor:'black', color: '#59ff85' }} // Make textarea fill the box
       />
       </Box>
