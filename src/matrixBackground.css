@@ -41,10 +41,10 @@
   
   @keyframes fall {
     from {
-      transform: translateY(1500%);
+      transform: translateY(3100%);
     }
     to {
-      transform: translateY(500%);
+      transform: translateY(3500%);
     }
   }
   

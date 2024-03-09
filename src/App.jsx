@@ -164,7 +164,7 @@ function App() {
     >
       <Box>
         <Box>
-          <pre style={{ textAlign: 'center', fontSize: '11px', color: '#5ae67f' }}>
+          <pre style={{ textAlign: 'center', fontSize: '15px', color: '#5ae67f' }}>
             {`
   )                       )
   (                      ( /(        (    (      ( /(                   )                            (        )          (    (                                 
@@ -215,7 +215,7 @@ function App() {
           </Flex>
         </Flex>
         <Box>
-          <div className="code-box-wrapper" style={{ display: 'flex', justifyContent: 'center', height: '100%', padding: '4%', }}>
+          <div className="code-box-wrapper" style={{ display: 'flex', justifyContent: 'center', height: '100%', padding: '2%', }}>
             <pre style={{ textAlign: 'left' }}>
               <Code style={{ backgroundColor: '#164723' }}>
                 { Array.from(correctText).map((char, index) => (
@@ -223,6 +223,7 @@ function App() {
                     key={index}
                     display="inline"
                     color={index < inputText.length && inputText[index] === char ? '#16fa53' : 'white'}
+                    style={{ fontSize: '18px'}}
                   >
                     {char}
                   </Text>

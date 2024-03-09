@@ -6,7 +6,7 @@ import MatrixBackground from './matrixBackground';
 import { Link } from 'react-router-dom';
 
 function IntroPage() {
-  const text = "Thhe mission is to infiltrate the impenetrable fortress of the Seattle Space Needle,              \nuncovering its secrets hidden in the shadows.              \nYou must employ cunning strategies and cutting-edge technology to breach the defenses,              \nrevealing the vulnerabilities lurking beneath the surface.              \nYour objective: to demonstrate the necessity of vigilance in the ever-evolving world of espionage              \nand cyber warfare,              \nensuring that the guardians of tomorrow's security remain one step ahead of the shadows."
+  const text = "Thhe mission is to infiltrate the impenetrable fortress of the Seattle Space Needle,              \nuncovering its secrets hidden in the shadows.              \nYou must employ cunning strategies and cutting-edge technology to breach the defenses,              \nrevealing the vulnerabilities lurking beneath the surface.              \nYour objective: to demonstrate the necessity of vigilance in the ever-evolving              \nworld of espionage and cyber warfare,              \nensuring that the guardians of tomorrow's security remain one step ahead of the shadows."
 
   const [displayText, setDisplayText] = useState('');
   const [done, setDone] = useState(false);
@@ -31,8 +31,8 @@ function IntroPage() {
 
   return (
     <Box>
-    <Text>
-    <pre style={{ textAlign: 'left', fontSize: '20px', color:'#5ae67f'}}>
+    <Text mt='10%' mr='5%'>
+    <pre style={{ textAlign: 'left', fontSize: '25px', color:'#5ae67f'}}>
     {displayText}
     </pre>
     </Text>

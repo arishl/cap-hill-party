@@ -30,7 +30,7 @@ function OptimizedPage() {
   return (
     <Box>
     <Text ml = "400px">
-    <pre style={{ textAlign: 'left', fontSize: '17px', color:'yellow'}}>
+    <pre style={{ textAlign: 'left', fontSize: '40px', color:'yellow'}}>
     {displayText}
     </pre>
     </Text>

@@ -31,7 +31,7 @@ function SuccessPage() {
   return (
     <Box>
     <Text ml = "400px">
-    <pre style={{ textAlign: 'left', fontSize: '17px', color:'green'}}>
+    <pre style={{ textAlign: 'left', fontSize: '40px', color:'#5ae67f'}}>
     {displayText}
     </pre>
     </Text>
@@ -42,7 +42,7 @@ function SuccessPage() {
 
      : <Box/>}
      </Link>
-    <MatrixBackground color = 'green' />
+    <MatrixBackground color = '#5ae67f' />
     </Box>
   );
 }

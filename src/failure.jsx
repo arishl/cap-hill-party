@@ -29,7 +29,7 @@ function FailurePage() {
   return (
     <Box>
     <Text ml = "500px">
-    <pre style={{ textAlign: 'left', fontSize: '17px', color:'red'}}>
+    <pre style={{ textAlign: 'left', fontSize: '40px', color:'red'}}>
     {displayText}
     </pre>
     </Text>
