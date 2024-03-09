@@ -5,7 +5,7 @@ import { Text, Box, Flex, Code, Input } from '@chakra-ui/react';
 import MatrixBackground from './matrixBackground';
 import { Link } from 'react-router-dom';
 
-function CompletionPage() {
+function FailurePage() {
   
 
   return (
@@ -25,4 +25,4 @@ function CompletionPage() {
   );
 }
 
-export default CompletionPage;
+export default FailurePage;

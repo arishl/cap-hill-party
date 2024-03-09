@@ -4,9 +4,10 @@ import {Button } from '@chakra-ui/react';
 import { Text, Box, Flex, Code, Input } from '@chakra-ui/react';
 import problems from './Problems.json'
 import Cookies from 'js-cookie';
-import MatrixBackground from './matrixBackground';
+import { useNavigate } from 'react-router-dom';  
 
 function App() {
+  let history = useNavigate();
   if (Cookies.get('highscorevalue')==null){
     Cookies.set('highscorevalue', 0, { expires: 7 });
   }
@@ -44,9 +45,15 @@ function App() {
         setCountdown(prevCountdown => prevCountdown - 1);
       }, 1000);
     }
+    
 
     return () => clearInterval(intervalId);
   }, [clicked, finished]);
+  useEffect(()=>{
+    if(clicked && countdown === 0 && !finished){
+      history('/failure');
+    }
+  })
 
   const handleStartClick = () => {
     setFinished(false);
@@ -70,6 +77,7 @@ function App() {
   }; // Change this to your desired correct text
 
   const handleInputChange= (event) => {
+    
     if (countdown != 0){
       let correct = false;
       let newChar = event.target.value.slice(-1); // newest character
@@ -106,7 +114,10 @@ function App() {
             setWpmHighscore(Math.floor(charactersTyped/(60-countdown)/4*60));
             setHighscoreName(currentName);
             Cookies.set('highscorename', currentName, { expires: 7 });
+            setDataGathered(parseInt(parseInt(dataGathered) + parseInt(charactersTyped)));
+            Cookies.set('datagathered', dataGathered,{expires: 7});
             Cookies.set('highscorevalue', Math.floor(charactersTyped/(60-countdown)/4*60), { expires: 7 });
+            history('/optimized');
           }
         }
       } else {
