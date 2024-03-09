@@ -23,7 +23,7 @@ function App() {
   const [wpmHighscore, setWpmHighscore] = useState(Cookies.get('highscorevalue'));
   const [currentName, setCurrentName] = useState("");
   const [highscoreName, setHighscoreName] = useState(Cookies.get('highscorename'));
-  const [dataGathered, setDataGathered] = useState(Cookies.get('datagathered'));
+  let dataGathered = parseInt(Cookies.get('datagathered'));
   // Function to generate a random index within the range of the array length
   const getRandomIndex = () => {
     return Math.floor(Math.random() * problems.problems.length);
@@ -57,6 +57,7 @@ function App() {
       history('/failure');
     }
   })
+  
 
   const handleStartClick = () => {
     setFinished(false);
@@ -107,9 +108,11 @@ function App() {
         }
         if(correctText.length === inputText.length){
           console.log("FUCKKKKER");
+          
+          
           if(!finished){
-            setDataGathered(parseInt(parseInt(dataGathered) + parseInt(charactersTyped)));
-            Cookies.set('datagathered', dataGathered,{expires: 7});
+            const holder = charactersTyped + dataGathered;
+            Cookies.set('datagathered', holder,{expires: 7});
           }
           setFinished(true);
           
@@ -117,8 +120,6 @@ function App() {
             setWpmHighscore(Math.floor(charactersTyped/(60-countdown)/4*60));
             setHighscoreName(currentName);
             Cookies.set('highscorename', currentName, { expires: 7 });
-            setDataGathered(parseInt(parseInt(dataGathered) + parseInt(charactersTyped)));
-            Cookies.set('datagathered', dataGathered,{expires: 7});
             Cookies.set('highscorevalue', Math.floor(charactersTyped/(60-countdown)/4*60), { expires: 7 });
             history('/optimized');
           } else {
