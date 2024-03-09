@@ -12,7 +12,10 @@ function App() {
     Cookies.set('highscorevalue', 0, { expires: 7 });
   }
   if (Cookies.get('datagathered')==null){
-    Cookies.set('datagathered', 0, { expires: 7 });
+    console.log("WE HAVE IT")
+    Cookies.set('datagathered', '2', { expires: 7 });
+  } else {
+    console.log("NOT NULL!!")
   }
   if (Cookies.get('highscorename')==null){
     Cookies.set('highscorename', "unclaimed", { expires: 7 })
@@ -103,10 +106,11 @@ function App() {
           } else {
             onNewLine = false;
           }
+          console.log('Characters typed:' + charactersTyped)
           setCharactersTyped(charactersTyped + 1);
           setInputText(testText);
         }
-        if(correctText.length === inputText.length){
+        if(correctText.length === inputText.length){ // do finishing logic
           console.log("FUCKKKKER");
           
           
@@ -151,90 +155,97 @@ function App() {
   };
 
   return (
-    <Box>
-    
-    
-    <Box>
-    <pre style={{ textAlign: 'center', fontSize: '11px', color:'#5ae67f'}}>
-  {` 
-
-  )                       )                                                                                                           
+    <Flex
+      height="100vh"
+      alignItems="center"
+      justifyContent="center"
+      flexDirection="column"
+      mt="-15%"
+    >
+      <Box>
+        <Box>
+          <pre style={{ textAlign: 'center', fontSize: '11px', color: '#5ae67f' }}>
+            {`
+  )                       )
   (                      ( /(        (    (      ( /(                   )                            (        )          (    (                                 
   )\\       )             )\\())  (    )\\   )\\     )\\())     )         ( /(   (            (  (        )\\    ( /(      )   )\\   )\\     (            (  (      (   
- (((_)   ( /(   \`  )     ((_)\\   )\\  ((_) ((_)   ((_)\\   ( /(    (    )\\())  )\\    (      )\\))(     (((_)   )\\())  ( /(  ((_) ((_)   ))\    (      )\\))(    ))\\  
- )\\___   )(_))  /(/(      _((_) ((_)  _    _      _((_)  )(_))   )\\  ((_)\\  ((_)   )\\ )  ((_))\\     )\\___  ((_)\\   )(_))  _    _    /((_)   )\\ )  ((_))\\   /((_) 
-((/ __| ((_)_  ((_)_\\    | || |  (_) | |  | |    | || | ((_)_   ((_) | |(_)  (_)  _(_/(   (()(_)   ((/ __| | |(_) ((_)_  | |  | |  (_))    _(_/(   (()(_) (_))   
- | (__  / _\` | | '_ \\)   | __ |  | | | |  | |    | __ | / _\` | / _|  | / /   | | | ' \\)) / _\` |     | (__  | ' \\  / _\` | | |  | |  / -_)  | ' \\)) / _\` |  / -_)  
-  \\___| \\__,_| | .__/    |_||_|  |_| |_|  |_|    |_||_| \\__,_| \\__|  |_\\_\\   |_| |_||_|  \\__, |      \\___| |_||_| \\__,_| |_|  |_|  \\___|  |_||_|  \\__, |  \\___|  
-               |_|                                                                       |___/                                                    |___/          
-
+  (((_)   ( /(   \`  )     ((_)\\   )\\  ((_) ((_)   ((_)\\   ( /(    (    )\\())  )\\    (      )\\))(     (((_)   )\\())  ( /(  ((_) ((_)   ))\\    (      )\\))(    ))\\  
+  )\\___   )(_))  /(/(      _((_) ((_)  _    _      _((_)  )(_))   )\\  ((_)\\  ((_)   )\\ )  ((_))\\     )\\___  ((_)\\   )(_))  _    _    /((_)   )\\ )  ((_))\\   /((_) 
+  ((/ __| ((_)_  ((_)_\\    | || |  (_) | |  | |    | || | ((_)_   ((_) | |(_)  (_)  _(_/(   (()(_)   ((/ __| | |(_) ((_)_  | |  | |  (_))    _(_/(   (()(_) (_))   
+   | (__  / _\` | | '_ \\)   | __ |  | | | |  | |    | __ | / _\` | / _|  | / /   | | | ' \\)) / _\` |     | (__  | ' \\  / _\` | | |  | |  / -_)  | ' \\)) / _\` |  / -_)  
+    \\___| \\__,_| | .__/    |_||_|  |_| |_|  |_|    |_||_| \\__,_| \\__|  |_\\_\\   |_| |_||_|  \\__, |      \\___| |_||_| \\__,_| |_|  |_|  \\___|  |_||_|  \\__, |  \\___|  
+                 |_|                                                                       |___/                                                    |___/          
+  
   `}
-</pre>
-    </Box>
-    <Flex width="100%" mb = "1%" justifyContent="center"
-  alignItems="center" >
-  <Input
-      placeholder="Enter credentials"
-      variant="outline"
-      size="md"
-      width="20%" mr = "4%"
-      value={currentName} // Bind the value to the state
-      onChange={handleCurrentNameChange}
-    />
-    <Button 
-      colorScheme={finished ? 'green' : !finished && countdown > 0 ? `red` : inputText.length>0 ? 'red' : 'green'}
-      onClick={handleStartClick}
-      disabled={clicked}
-      
-    >
-    
-      {finished ? 'Firewall Breached!' : !finished && countdown > 0 ? `${countdown}` : inputText.length>0 ? 'Failure' : 'Start'}
-    </Button>
-    <Button ml = "30px"
-      colorScheme={countdown === 0 ? 'blue': 'pink'}
-      
-    >
-      {`WPM: ${Math.floor(charactersTyped/(60-countdown)/4*60)}`}
-    </Button>
-    <Button ml = "30px"
-      colorScheme={wpmHighscore < Math.floor(charactersTyped/(60-countdown)/4*60) ? 'blue' : 'yellow'}>
-        {wpmHighscore < Math.floor(charactersTyped/(60-countdown)/4*60) ? "WPM HIGHSCORE: " + Math.floor(charactersTyped/(60-countdown)/4*60) + " - " + currentName + "???" : "WPM HIGHSCORE: " + wpmHighscore + " - " + highscoreName}
-    </Button>
-    <Button ml = "30px"
-      colorScheme='orange'>
-        { "Data retrieved: " + Cookies.get('datagathered')}
-    </Button>
-    </Flex>
-      <Box height = "100%">
-      <div className="code-box-wrapper" style={{ display: 'flex', justifyContent: 'center' }}>
-      <pre style={{ textAlign: 'left' }}>
-      <Code style={{ backgroundColor: '#164723'}}>
-        { Array.from(correctText).map((char, index) => (
-          <Text
-            key={index}
-            display="inline"
-              color={index < inputText.length && inputText[index] === char ? '#16fa53' : 'white'}
-            >
-              {char}
-            </Text>
-          ))}
-          </Code>
           </pre>
-        </div>
+        </Box>
+        <Flex
+          width="100%"
+          mb="1%"
+          justifyContent="center"
+          alignItems="center"
+          flexDirection="column"
+        >
+          <Flex>
+          <Input
+            placeholder="Enter credentials"
+            variant="outline"
+            size="md"
+            width="20%"
+            mr="4%"
+            value={currentName} // Bind the value to the state
+            onChange={handleCurrentNameChange}
+          />
+          <Button 
+            colorScheme={finished ? 'green' : !finished && countdown > 0 ? `red` : inputText.length>0 ? 'red' : 'green'}
+            onClick={handleStartClick}
+            disabled={clicked}
+          >
+            {finished ? 'Firewall Breached!' : !finished && countdown > 0 ? `${countdown}` : inputText.length>0 ? 'Failure' : 'Start'}
+          </Button>
+          <Button ml="30px" colorScheme={countdown === 0 ? 'blue': 'pink'}>
+            {`WPM: ${Math.floor(charactersTyped/(60-countdown)/4*60)}`}
+          </Button>
+          <Button ml="30px" colorScheme={wpmHighscore < Math.floor(charactersTyped/(60-countdown)/4*60) ? 'blue' : 'yellow'}>
+            {wpmHighscore < Math.floor(charactersTyped/(60-countdown)/4*60) ? "WPM HIGHSCORE: " + Math.floor(charactersTyped/(60-countdown)/4*60) + " - " + currentName + "???" : "WPM HIGHSCORE: " + wpmHighscore + " - " + highscoreName}
+          </Button>
+          <Button ml="30px" colorScheme='orange'>
+            { "Data retrieved: " + Cookies.get('datagathered')}
+          </Button>
+          </Flex>
+        </Flex>
+        <Box>
+          <div className="code-box-wrapper" style={{ display: 'flex', justifyContent: 'center', height: '100%', padding: '4%', }}>
+            <pre style={{ textAlign: 'left' }}>
+              <Code style={{ backgroundColor: '#164723' }}>
+                { Array.from(correctText).map((char, index) => (
+                  <Text
+                    key={index}
+                    display="inline"
+                    color={index < inputText.length && inputText[index] === char ? '#16fa53' : 'white'}
+                  >
+                    {char}
+                  </Text>
+                ))}
+              </Code>
+            </pre>
+          </div>
+        </Box>
+        <Box mt={4} width="100%" height="100px" style={{ backgroundColor: 'black' }}>
+          <textarea
+            height="100%"
+            type="text"
+            value={inputText.slice(-50)}
+            onKeyDown={handleKeyDown}
+            onChange={handleInputChange}
+            placeholder={"Start hacking " + currentName + "..."}
+            style={{ padding: '8px', fontSize: '16px', width: '100%', height: '100%', backgroundColor:'black', color: '#59ff85' }}
+          />
+        </Box>
       </Box>
-      <Box mt={4} width="100%" height="100px" style={{ backgroundColor: 'black' }}> {/* Adjust width and height as needed */}
-        <textarea
-        height="100%"
-        type="text"
-        value={inputText.slice(-50)}
-        onKeyDown={handleKeyDown}
-        onChange={handleInputChange}
-        placeholder={"Start hacking " + currentName + "..."}
-        style={{ padding: '8px', fontSize: '16px', width: '100%', height: '100%', backgroundColor:'black', color: '#59ff85' }} // Make textarea fill the box
-      />
-      </Box>
-    </Box>
+    </Flex>
   );
+  
 }
 
 export default App;
