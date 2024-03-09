@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './App.css'
 import {Button } from '@chakra-ui/react';
 import { Text, Box, Flex, Code, Input } from '@chakra-ui/react';
@@ -8,25 +8,40 @@ import Cookies from 'js-cookie';
 
 function SuccessPage() {
   
+    const text = "Fiirewall Breached.          \n" + Cookies.get('currentscorename') + "         \n" + "WPM: " + Cookies.get('currentscorevalue');
 
+    const [displayText, setDisplayText] = useState('');
+    const [done, setDone] = useState(false);
+    const currentIndexRef = useRef(0);
+    useEffect(() => {
+        currentIndexRef.current = 0;
+        setDisplayText('');
+        const interval = setInterval(() => {
+          if (currentIndexRef.current === text.length-1) {
+            clearInterval(interval);
+            setDone(true);
+          } else {
+            setDisplayText(prevText => prevText + text[currentIndexRef.current]);
+            currentIndexRef.current++;
+          }
+        }, 80); // Adjust the interval as needed
+    
+        return () => clearInterval(interval);
+      }, [text]);
   return (
     <Box>
-    <Text>
-    <pre style={{ textAlign: 'center', fontSize: '17px', color:'green'}}>
-    Firewall breached.
-    </pre>
-    <pre style={{ textAlign: 'center', fontSize: '17px', color:'green'}}>
-    {Cookies.get('currentscorename')}
-    </pre>
-    <pre style={{ textAlign: 'center', fontSize: '17px', color:'green'}}>
-    {'WPM: ' + Cookies.get('currentscorevalue')}
+    <Text ml = "400px">
+    <pre style={{ textAlign: 'left', fontSize: '17px', color:'green'}}>
+    {displayText}
     </pre>
     </Text>
     <Link to="/">
-    <Button m = "50px" colorScheme= 'green'>
+    {done ? <Button m = "30px" colorScheme= 'green'>
       Return
     </Button>
-    </Link>
+
+     : <Box/>}
+     </Link>
     <MatrixBackground color = 'green' />
     </Box>
   );
