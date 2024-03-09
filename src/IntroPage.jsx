@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './App.css'
 import {Button } from '@chakra-ui/react';
 import { Text, Box, Flex, Code, Input } from '@chakra-ui/react';
@@ -6,22 +6,24 @@ import MatrixBackground from './matrixBackground';
 import { Link } from 'react-router-dom';
 
 function IntroPage() {
-  const text = "The mission is to infiltrate the impenetrable fortress of the Seattle Space Needle,\nuncovering its secrets hidden in the shadows. \nYou must employ cunning strategies and cutting-edge technology to breach the defenses,\nrevealing the vulnerabilities lurking beneath the surface. \nYour objective: to demonstrate the necessity of vigilance in the ever-evolving world of espionage \nand cyber warfare,\nensuring that the guardians of tomorrow's security remain one step ahead of the shadows."
+  const text = "Thhe mission is to infiltrate the impenetrable fortress of the Seattle Space Needle,              \nuncovering its secrets hidden in the shadows.              \nYou must employ cunning strategies and cutting-edge technology to breach the defenses,              \nrevealing the vulnerabilities lurking beneath the surface.              \nYour objective: to demonstrate the necessity of vigilance in the ever-evolving world of espionage              \nand cyber warfare,              \nensuring that the guardians of tomorrow's security remain one step ahead of the shadows."
 
   const [displayText, setDisplayText] = useState('');
   const [done, setDone] = useState(false);
+  const currentIndexRef = useRef(0);
 
   useEffect(() => {
-    let currentIndex = 0;
+    currentIndexRef.current = 0;
+    setDisplayText('');
     const interval = setInterval(() => {
-      if (currentIndex === text.length-1) {
+      if (currentIndexRef.current === text.length-1) {
         clearInterval(interval);
         setDone(true);
       } else {
-        setDisplayText(prevText => prevText + text[currentIndex]);
-        currentIndex++;
+        setDisplayText(prevText => prevText + text[currentIndexRef.current]);
+        currentIndexRef.current++;
       }
-    }, 100); // Adjust the interval as needed
+    }, 50); // Adjust the interval as needed
 
     return () => clearInterval(interval);
   }, [text]);
