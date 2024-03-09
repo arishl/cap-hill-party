@@ -14,6 +14,9 @@ function App() {
   if (Cookies.get('datagathered')==null){
     Cookies.set('datagathered', 0, { expires: 7 });
   }
+  if (Cookies.get('highscorename')==null){
+    Cookies.set('highscorename', "unclaimed", { expires: 7 })
+  }
   const [correctText, setCorrectText] = useState("");
   const [charactersTyped, setCharactersTyped] = useState(0);
   const [finished, setFinished] = useState(false);
@@ -118,6 +121,10 @@ function App() {
             Cookies.set('datagathered', dataGathered,{expires: 7});
             Cookies.set('highscorevalue', Math.floor(charactersTyped/(60-countdown)/4*60), { expires: 7 });
             history('/optimized');
+          } else {
+            Cookies.set('currentscorevalue', Math.floor(charactersTyped/(60-countdown)/4*60), { expires: 7 })
+            Cookies.set('currentscorename', currentName, { expires: 7 })
+            history('/success');
           }
         }
       } else {
@@ -194,7 +201,7 @@ function App() {
     </Button>
     <Button ml = "30px"
       colorScheme='orange'>
-        {"Data retrieved: " + dataGathered}
+        { "Data retrieved: " + Cookies.get('datagathered')}
     </Button>
     </Flex>
       <Box height = "100%">
