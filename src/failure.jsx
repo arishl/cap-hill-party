@@ -6,7 +6,7 @@ import MatrixBackground from './matrixBackground';
 import { Link } from 'react-router-dom';
 
 function FailurePage() {
-  const text = "Faailure to inflitrate...    "
+  const text = "Faailure to infiltrate...    "
 
     const [displayText, setDisplayText] = useState('');
     const [done, setDone] = useState(false);
